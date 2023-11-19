@@ -18,8 +18,11 @@ services:
         dockerfile: ./Dockerfile
     container_name: client
     restart: unless-stopped
+<<<<<<< Updated upstream
     ports:
       - 3000:3000
+=======
+>>>>>>> Stashed changes
 
   api:
     image: api
@@ -28,8 +31,11 @@ services:
         dockerfile: ./Dockerfile
     container_name: server
     restart: unless-stopped
+<<<<<<< Updated upstream
     ports:
       - 3001:3001
+=======
+>>>>>>> Stashed changes
 
   mongodb:
     image: mongo:latest
@@ -38,8 +44,11 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pZ5FbOZ50GkZ
+<<<<<<< Updated upstream
     ports:
       - 27017:27017
+=======
+>>>>>>> Stashed changes
     volumes:
       - mongodb:/data/db
 
