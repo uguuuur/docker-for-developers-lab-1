@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Todo Application</h1>
+      <!-- Input field -->
+      <div class="input-group mb-3">
+        <input [(ngModel)]="pendingTask" type="text" class="form-control" placeholder="Enter your todo item" aria-label="Enter your todo item" aria-describedby="button-addon2">
+        <button *ngIf="!isUpdateEnabled" class="btn btn-outline-primary" type="button" id="button-addon2" (click)="addTask(pendingTask)">Add</button>
+        <button *ngIf="isUpdateEnabled" class="btn btn-outline-primary" type="button" id="button-addon2" (click)="updateTask()">Update</button>
+        <button *ngIf="isUpdateEnabled" class="btn btn-outline-primary" type="button" id="button-addon2" (click)="cancelUpdateTask()">Cancel</button>
+      </div>
+      <hr>
+      <!-- All todos -->
+      <div class="card-checkbox-container">
+        <ng-container *ngIf="allTasks.length == 0">
+           <img src="{{ environment.imgSource }}/empty.png" alt="">
+        </ng-container>
+        <ng-container *ngIf="allTasks.length > 0">
+          <div class="taskWrapper" *ngFor="let task of allTasks">  
+            <div class="form-check content-checkbox">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="onCheckboxToggle($event, task)">
+              <label class="form-check-label" for="flexCheckDefault">
+                <s *ngIf="task.is_completed">{{ task.content }}</s>
+                <ng-container *ngIf="!task.is_completed">
+                  {{ task.content }}
+                </ng-container>
+              </label>
+            </div>
+            <div class="btn-group btn-group-sm control-buttons" 
+                 role="group" 
+                 aria-label="Task Controls"
+                 *ngIf="controlsAllowed(task)">
+              <button type="button" class="btn btn-outline-warning" [attr.disabled]="task.is_completed ? true : null" (click)="edit()">Edit</button>
+              <button type="button" class="btn btn-outline-success" [attr.disabled]="task.is_completed ? true : null" (click)="completeTask(task)">Complete</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <hr>
+      <!-- Footer -->
+      <div class="card-footer-container">
+        <span>
+          {{ getSelectedTasksLabel() }}
+        </span>
+        <button type="button" class="btn btn-outline-danger delete-all" (click)="deleteSelected()">Delete selected</button>
+      </div>
+    </div>
+  </div>

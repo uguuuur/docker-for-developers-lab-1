@@ -1,26 +1,14 @@
 version: "3.8"
 services:
 
-  nginx:
-    image: nginx
+  angular-client:
+    image: angular-client
     build:
-      context: nginx
-      dockerfile: ./Dockerfile
-    container_name: nginx
-    restart: unless-stopped
-    ports:
-    - 80:80
-    networks:
-    - dockerForDevelopers
-  
-  client:
-    image: client
-    build:
-        context: client
+        context: angular-client
         dockerfile: ./Dockerfile
-    container_name: client
+    container_name: angular-client
     restart: unless-stopped
-    networks: 
+    networks:
       - dockerForDevelopers
 
   api:
@@ -44,6 +32,20 @@ services:
       - mongodb:/data/db
     networks:  
       - dockerForDevelopers
+
+  nginx:
+    image: my-nginx
+    build:
+      context: nginx
+      dockerfile: ./Dockerfile
+    container_name: my-nginx
+    depends_on:
+    - angular-client
+    restart: unless-stopped
+    ports:
+    - 80:80
+    networks:
+    - dockerForDevelopers
 
 volumes:
   mongodb:

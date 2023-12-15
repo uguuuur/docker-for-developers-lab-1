@@ -2,4 +2,5 @@ FROM node:latest
 WORKDIR .
 COPY . .
 RUN npm i
-CMD ["npm", "start"]
+EXPOSE 3001
+CMD ["npm", "run", "start"]

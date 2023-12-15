@@ -1,0 +1,45 @@
+h1 {
+    font-size: 1.28571429em
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.714);
+  }
+
+.card {
+    width: 25rem;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.taskWrapper {
+    
+    display: flex;
+    margin-bottom: .5rem;
+}
+
+.control-buttons {
+    margin-left: auto;
+}
+
+.content-checkbox {
+    float: left
+}
+
+.card-checkbox-container {
+    min-height: 20rem;
+}
+
+
+.card-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
