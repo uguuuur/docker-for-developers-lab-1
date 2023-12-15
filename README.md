@@ -1,6 +1,6 @@
 # Todo Application
 
-![Screenshot](https://raw.githubusercontent.com/harunguter/todo-app/main/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/code-gogo/docker-for-developers-lab-1/3ae57f8481b466f5889d16a84788729e9299afb7/angular-screenshot.png)
 
 ## Run app
 ```bash
