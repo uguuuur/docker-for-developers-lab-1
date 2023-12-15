@@ -68,6 +68,6 @@ DELETE  /todo/:id
 
 **Server:** Nginx
 <br>
-**Frontend:** React, Semantic UI
+**Frontend:** Angular prod build served by NginX
 <br>
 **API:** Node, Express, MongoDB
