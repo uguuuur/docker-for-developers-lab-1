@@ -4,12 +4,14 @@ services:
   nginx:
     image: nginx
     build:
-      context: ./nginx
+      context: nginx
       dockerfile: ./Dockerfile
     container_name: nginx
     restart: unless-stopped
     ports:
     - 80:80
+    networks:
+    - dockerForDevelopers
   
   client:
     image: client
@@ -18,6 +20,8 @@ services:
         dockerfile: ./Dockerfile
     container_name: client
     restart: unless-stopped
+    networks: 
+      - dockerForDevelopers
 
   api:
     image: api
@@ -26,6 +30,8 @@ services:
         dockerfile: ./Dockerfile
     container_name: server
     restart: unless-stopped
+    networks: 
+      - dockerForDevelopers
 
   mongodb:
     image: mongo:7.0
@@ -36,7 +42,14 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: pZ5FbOZ50GkZ
     volumes:
       - mongodb:/data/db
+    networks:  
+      - dockerForDevelopers
 
 volumes:
   mongodb:
     driver: local
+
+networks:
+  dockerForDevelopers:
+    name: dockerForDevelopers
+    driver: bridge
