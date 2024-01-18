@@ -38,7 +38,7 @@ services:
         constraints: [node.role != manager]
 
   mongodb:
-    image: mongo:latest
+    image: mongo:7.0
     container_name: database
     restart: unless-stopped
     environment:
