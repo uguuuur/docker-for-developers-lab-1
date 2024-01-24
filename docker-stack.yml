@@ -1,9 +1,9 @@
-# Add docker.registry in your /etc/hosts config file
+# Add docker.local in your /etc/hosts config file
 version: "3.8"
 services:
 
   nginx:
-    image: docker.registry:5000/nginx:1.0
+    image: docker.local:5000/nginx:1.0
     container_name: nginx
     restart: unless-stopped
     ports:
@@ -16,7 +16,7 @@ services:
         constraints: [node.role != manager]
   
   client:
-    image: docker.registry:5000/client:1.0
+    image: docker.local:5000/client:1.0
     container_name: client
     restart: unless-stopped
     deploy: 
@@ -27,7 +27,7 @@ services:
         constraints: [node.role != manager]
 
   api:
-    image: docker.registry:5000/api:1.0
+    image: docker.local:5000/api:1.0
     container_name: server
     restart: unless-stopped
     deploy: 
